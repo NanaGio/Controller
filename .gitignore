@@ -1,0 +1,25 @@
+# 1. Dependências do Node 
+/node_modules
+
+# 2. Arquivos de Ambiente 
+.env
+.env.*
+*.env
+
+# 3. Arquivos de Log
+*.log
+npm-debug.log*
+
+# 4. Arquivos do Sistema Operacional
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# 5. Arquivos de IDE (Ex: VS Code, WebStorm)
+.vscode/
+.idea/
+
+# 6. Pastas de Build (Se você usar TypeScript ou um builder)
+/dist
+/build
