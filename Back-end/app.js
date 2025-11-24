@@ -7,6 +7,9 @@ const MONGO_URI = process.env.MONGO_URI;
 
 // importando rotas
 const insumoRoutes = require('./src/routes/insumo.routes');
+const produtoRoutes = require('./src/routes/produto.routes');
+const vendaRoutes = require('./src/routes/venda.routes.js')
+const bmRoutes = require ('./src/routes/bm.routes.js')
 
 // express
 app.use(express.json()); 
@@ -16,11 +19,7 @@ app.get('/', (req,res) => {
     res.send('API Delicake ONLINE');
 });
 
-app.use('/api', insumoRoutes);
-
-// === AQUI ROTAS ===
-// Diz ao Express que qualquer rota que comece com /api
-// deve ser gerenciada pelo seu arquivo 'insumoRoutes'
+app.use('/api', insumoRoutes, produtoRoutes, vendaRoutes, bmRoutes);
 
 mongoose.connect(MONGO_URI)
     .then(() => {
