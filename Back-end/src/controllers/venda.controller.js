@@ -3,30 +3,27 @@ const Produto = require('../models/produto.model');
 const Insumo = require('../models/insumo.model');
 
 exports.createVenda = async (req, res) => {
-    try{
-        const {cliente, itens} = req.body;
+    try {
+        const { nomeCliente, itens } = req.body; // ← CORRIGIDO
 
         let valorTotalVenda = 0;
         let custoTotalInsumos = 0;
         const itensCompletos = [];
 
-        for (const item of itens){
-            // buscar produto e receita
+        for (const item of itens) {
             const produtoInfo = await Produto.findById(item.produtoId).populate('receita.insumoId');
-
-            if (!produtoInfo){
-                return res.status(404).json({ message: `Produto com ID ${item.produtoId} não encontrado.`})
+            
+            if (!produtoInfo) {
+                return res.status(404).json({ message: `Produto com ID ${item.produtoId} não encontrado.` });
             }
 
-            // calculando...
             const precoTotalItem = produtoInfo.precoVenda * item.quantidade;
             valorTotalVenda += precoTotalItem;
 
-            // dando baixa no estoque
-            for (const ingredientes of produtoInfo.receita){
-                const insumo = ingredientes.insumoId;
-                const quantidadeGasta = ingredientes.quantidadeN * item.quantidade;
-
+            for (const ingrediente of produtoInfo.receita) {
+                const insumo = ingrediente.insumoId;
+                const quantidadeGasta = ingrediente.quantidadeN * item.quantidade;
+                
                 custoTotalInsumos += (insumo.custoPorUnidade * quantidadeGasta);
 
                 await Insumo.findByIdAndUpdate(insumo._id, {
@@ -42,7 +39,7 @@ exports.createVenda = async (req, res) => {
         }
 
         const novaVenda = await Venda.create({
-            cliente,
+            nomeCliente: nomeCliente, // ← CORRIGIDO
             itens: itensCompletos,
             valorTotalVenda,
             custoTotalInsumos
@@ -51,11 +48,11 @@ exports.createVenda = async (req, res) => {
         res.status(201).json({
             message: "Venda registrada - Estoque atualizado",
             venda: novaVenda
-        })
+        });
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Erro ao processar venda", error: error.message});
+        res.status(500).json({ message: "Erro ao processar venda", error: error.message });
     }
 };
 
@@ -67,5 +64,38 @@ exports.getAllVendas = async (req, res) => {
         res.status(200).json(vendas);
     } catch (error) {
         res.status(500).json({ message: "Erro ao buscar vendas", error: error.message });
+    }
+};
+
+// Adicione estes métodos que estão faltando:
+
+exports.updateVenda = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const vendaAtualizada = await Venda.findByIdAndUpdate(id, req.body, { new: true });
+        
+        if (!vendaAtualizada) {
+            return res.status(404).json({ message: "Venda não encontrada." });
+        }
+        res.status(200).json({
+            message: "Venda atualizada com sucesso!",
+            venda: vendaAtualizada
+        });
+    } catch (error) {
+        res.status(400).json({ message: "Erro ao atualizar venda", error: error.message });
+    }
+};
+
+exports.deleteVenda = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const vendaDeletada = await Venda.findByIdAndDelete(id);
+        
+        if (!vendaDeletada) {
+            return res.status(404).json({ message: "Venda não encontrada." });
+        }
+        res.status(200).json({ message: "Venda deletada com sucesso!" });
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao deletar venda", error: error.message });
     }
 };

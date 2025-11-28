@@ -7,7 +7,7 @@ router.get('/venda', vendaController.getAllVendas)
 
 router.post('/venda', vendaController.createVenda)
 
-router.put('/venda/:id', vendaController.putVenda)
+router.put('/venda/:id', vendaController.updateVenda)
 
 router.delete('/venda/:id', vendaController.deleteVenda)
 

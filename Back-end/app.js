@@ -19,7 +19,10 @@ app.get('/', (req,res) => {
     res.send('API Delicake ONLINE');
 });
 
-app.use('/api', insumoRoutes, produtoRoutes, vendaRoutes, bmRoutes);
+app.use('/api', insumoRoutes);
+app.use('/api', produtoRoutes);
+app.use('/api', vendaRoutes);
+app.use('/api', bmRoutes);
 
 mongoose.connect(MONGO_URI)
     .then(() => {
@@ -32,7 +35,3 @@ mongoose.connect(MONGO_URI)
         console.error(" ERRO ao conectar", error.message);
     })
 // === x x x x x ===
-
-app.listen(PORT, () => {
-    console.log(`Server Teste rodando em ${PORT}`);
-});
