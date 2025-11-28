@@ -4,7 +4,7 @@ exports.getBM = async (req, res) => {
     try {
         const hoje = new Date();
         const mes = req.query.mes ? parseInt(req.query.mes) : (hoje.getMonth() + 1)
-        const ano = req.query.ano ? parseInt(req.query.ano) : (hoje.getFullYear);
+        const ano = req.query.ano ? parseInt(req.query.ano) : (hoje.getFullYear());
 
         const dataInicio = new Date(ano, mes - 1, 1);
         const dataFim = new Date(ano, mes, 0, 23, 59, 59);

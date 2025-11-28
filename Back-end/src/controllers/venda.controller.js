@@ -14,13 +14,13 @@ exports.createVenda = async (req, res) => {
             // buscar produto e receita
             const produtoInfo = await Produto.findById(item.produtoId).populate('receita.insumoId');
 
-            if (!paraleloInfo){
+            if (!produtoInfo){
                 return res.status(404).json({ message: `Produto com ID ${item.produtoId} não encontrado.`})
             }
 
             // calculando...
             const precoTotalItem = produtoInfo.precoVenda * item.quantidade;
-            valorTotalVenda = precoTotalItem;
+            valorTotalVenda += precoTotalItem;
 
             // dando baixa no estoque
             for (const ingredientes of produtoInfo.receita){
@@ -37,7 +37,7 @@ exports.createVenda = async (req, res) => {
             itensCompletos.push({
                 produtoId: produtoInfo._id,
                 quantidade: item.quantidade,
-                precoUniterioAtul: produtoInfo.precoVenda
+                precoUnitarioMomento: produtoInfo.precoVenda
             });
         }
 
@@ -62,7 +62,7 @@ exports.createVenda = async (req, res) => {
 exports.getAllVendas = async (req, res) => {
     try {
         const vendas = await Venda.find()
-            .populate('itens.produtoId', 'none')
+            .populate('itens.produtoId', 'nome')
             .sort({ dataVenda: -1});
         res.status(200).json(vendas);
     } catch (error) {
