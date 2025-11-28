@@ -1,0 +1,90 @@
+/* Estilo do container principal da tela */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ocupa a altura total da tela */
+  width: 100vw;  /* Ocupa a largura total da tela */
+  background-color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Evita barras de rolagem indesejadas */
+}
+
+/* Seção de boas-vindas com a imagem de fundo */
+.welcomeSection {
+  flex: 1; /* Faz esta seção ocupar o espaço disponível */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  text-align: center;
+}
+
+.welcomeDescription {
+  color: #28224E;
+  font-weight: 400; /* Poppins Regular */
+
+}
+
+.welcomeText {
+  color: #28224E;
+  font-weight: 700; /* Poppins Bold */
+  font-size: 2.5rem; /* Tamanho grande para destaque */
+}
+
+/* Seção do formulário na parte de baixo */
+.formSection {
+  padding: 30px 20px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaçamento entre os elementos */
+  border-top-left-radius: 20px; /* Bordas arredondadas para um visual suave */
+  border-top-right-radius: 20px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil no topo */
+  margin-top: -20px; /* Puxa a seção para cima, sobrepondo a imagem */
+  position: relative;
+  z-index: 1;
+}
+
+.nameLabel {
+  font-size: 1.1rem;
+  color: #28224E;
+  font-weight: 500;
+}
+
+.nameInput {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  background-color: #F3F1F1;
+  color: #28224E;
+}
+
+.nameInput::placeholder {
+  color: #BDBDBD;
+}
+
+.continueButton {
+  background-color: #AD795B;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.continueButton:hover {
+  background-color: #9c6b50; /* Um tom mais escuro para o hover */
+}

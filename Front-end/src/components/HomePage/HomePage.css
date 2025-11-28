@@ -1,0 +1,91 @@
+.stats-box {
+    background-color: #F5F5F5;
+    width: 85%;
+    height: 150px;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Adiciona um espaço acima da caixa */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stats-month {
+    font-size: 18px;
+    color: #28224E;
+    align-self: center;
+    font-weight: bold;
+}
+
+.stats-label {
+    font-size: 15px;
+    color: #28224E;
+    align-self: center;
+}
+
+.stats-value {
+    font-size: 35px;
+    font-weight: bold;
+    color: #28224E;
+    align-self: center;
+}
+
+.homepage-greeting {
+    font-size: 35px;
+    font-weight: medium;
+    color: #28224E;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.homepage-subtitle {
+    font-size: 15px;
+    color: #28224E;
+    text-align: left;
+    margin-left: 30px;
+    width: 80%;
+}
+
+.action-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 30px;
+    padding: 0 15px;
+}
+
+.action-button {
+    width: 300px;
+    height: 70px;
+    background-color: #AD7A5C;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-align: left;
+}
+
+.button-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.button-paragraph {
+    font-size: 10px;
+    margin: 2px 0 0 0;
+}
