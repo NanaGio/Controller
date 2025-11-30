@@ -1,0 +1,130 @@
+/* --- Estilos Mobile First (Padrão) --- */
+.sales-list-container {
+    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    min-height: 100vh;
+}
+
+.sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sales-header h2 {
+    color: #333;
+    font-size: 1.75rem;
+}
+
+.sales-header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.sales-table-container {
+    /* Remove estilos de container de tabela no mobile */
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem; /* Espaçamento entre os cards */
+}
+
+.sales-table thead {
+    /* Esconde o cabeçalho da tabela em telas pequenas */
+    display: none;
+}
+
+.sales-table tr {
+    /* Transforma cada linha em um card */
+    display: block;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.sales-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: right; /* Alinha o valor à direita */
+}
+
+.sales-table td:last-child {
+    border-bottom: none;
+}
+
+.sales-table td::before {
+    /* Adiciona o label (Cliente, Itens, etc.) antes do conteúdo */
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+    text-align: left; /* Alinha o label à esquerda */
+    margin-right: 1rem;
+}
+
+/* Garante que o conteúdo da célula de ações se alinhe corretamente no mobile */
+.sales-table td[data-label="Ações"] {
+    justify-content: flex-end;
+}
+
+.sales-table td ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    width: 100%;
+}
+
+.sales-table td ul li {
+    padding: 2px 0;
+}
+
+.no-sales-message {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+/* --- Estilos para Telas Maiores (Tablet e Desktop) --- */
+@media (min-width: 768px) {
+    .sales-list-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: transparent;
+    }
+
+    .sales-table-container {
+        overflow-x: auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sales-table, .sales-table thead, .sales-table tbody, .sales-table th, .sales-table td, .sales-table tr {
+        display: revert; /* Reverte para os estilos padrão de tabela */
+        border-spacing: 0;
+    }
+
+    .sales-table td::before {
+        display: none; /* Esconde os labels dos pseudo-elementos */
+    }
+
+    .sales-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+}

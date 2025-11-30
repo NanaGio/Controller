@@ -24,7 +24,7 @@ const HomePage = ({ name }) => {
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
         </button>
-        <button className="action-button">
+        <button className="action-button" onClick={() => navigate('/sales')}>
           <div className="button-text-container">
             <div className="button-title">Vendas</div>
             <p className="button-paragraph">Verifique o controle de vendas mensais</p>
@@ -33,7 +33,7 @@ const HomePage = ({ name }) => {
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
         </button>
-        <button className="action-button">
+        <button className="action-button" onClick={() => navigate('/stock')}>
           <div className="button-text-container">
             <div className="button-title">Estoque</div>
             <p className="button-paragraph">Gerencie seu estoque baseado em seus insumos</p>

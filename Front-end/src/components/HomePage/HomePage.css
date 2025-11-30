@@ -1,83 +1,92 @@
+/* --- Estilos Mobile First (Padrão) --- */
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
 .stats-box {
     background-color: #F5F5F5;
-    width: 85%;
-    height: 150px;
+    width: 100%;
+    max-width: 350px; /* Limita a largura em telas maiores */
     border-radius: 10px;
     padding: 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px; /* Adiciona um espaço acima da caixa */
+    justify-content: center;
+    margin-bottom: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .stats-month {
     font-size: 18px;
     color: #28224E;
-    align-self: center;
     font-weight: bold;
 }
 
 .stats-label {
     font-size: 15px;
     color: #28224E;
-    align-self: center;
 }
 
 .stats-value {
     font-size: 35px;
     font-weight: bold;
     color: #28224E;
-    align-self: center;
 }
 
 .homepage-greeting {
     font-size: 35px;
-    font-weight: medium;
+    font-weight: 500; /* 'medium' é 500 */
     color: #28224E;
-    text-align: left;
-    margin-left: 30px;
-    margin-top: 30px;
+    margin: 0 0 0.5rem 0;
 }
 
 .homepage-subtitle {
     font-size: 15px;
     color: #28224E;
-    text-align: left;
-    margin-left: 30px;
-    width: 80%;
+    margin-bottom: 2rem;
+    max-width: 400px;
 }
 
 .action-buttons-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Espaçamento entre os botões */
-    margin-top: 30px;
-    padding: 0 15px;
+    gap: 15px;
+    width: 100%;
+    max-width: 350px; /* Limita a largura dos botões */
 }
 
 .action-button {
-    width: 300px;
+    width: 100%;
     height: 70px;
     background-color: #AD7A5C;
     border-radius: 10px;
     border: none;
     padding: 10px 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: white;
     text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
 }
 
 .button-text-container {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .button-title {
@@ -88,4 +97,11 @@
 .button-paragraph {
     font-size: 10px;
     margin: 2px 0 0 0;
+}
+
+/* --- Estilos para Telas Maiores --- */
+@media (min-width: 768px) {
+    .stats-box, .action-buttons-container {
+        max-width: 450px;
+    }
 }

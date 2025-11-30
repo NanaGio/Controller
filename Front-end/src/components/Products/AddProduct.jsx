@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './AddProduct.css'; // Crie este arquivo para estilização
 
@@ -112,7 +113,6 @@ const AddProduct = () => {
                     <input type="text" id="foto" name="foto" value={produto.foto} onChange={handleChange} placeholder="https://exemplo.com/imagem.jpg" />
                 </div>
 
-                <h2>Receita *</h2>
                 {produto.receita.map((item, index) => (
                     <div key={index} className="receita-item">
                         <div className="form-group">

@@ -5,6 +5,13 @@ import StartScreen from './components/StartScreen/StartScreen.jsx'
 import HomePage from './components/HomePage/HomePage.jsx';
 import Products from './components/Products/Products.jsx';
 import AddProduct from './components/Products/AddProduct.jsx';
+import Sales from './components/Sales/Sales.jsx';
+import AddSale from './components/Sales/AddSale.jsx';
+import SaleDetails from './components/Sales/SaleDetails.jsx';
+import EditSale from './components/Sales/EditSale.jsx';
+import Stock from './Stock.jsx';
+import AddSupply from './components/Stock/AddSupply.jsx';
+import EditSupply from './components/Stock/EditSupply.jsx';
 
 function App() {
   const [name, setName] = useState('');
@@ -22,6 +29,13 @@ function App() {
         <Route path="/home" element={<HomePage name={name} />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/new" element={<AddProduct />} />
+        <Route path="/sales" element={<Sales />} />
+        <Route path="/sales/new" element={<AddSale />} />
+        <Route path="/sales/details/:id" element={<SaleDetails />} />
+        <Route path="/sales/edit/:id" element={<EditSale />} />
+        <Route path="/stock" element={<Stock />} />
+        <Route path="/stock/new" element={<AddSupply />} />
+        <Route path="/stock/edit/:id" element={<EditSupply />} />
       </Routes>
     </>
   )
