@@ -108,10 +108,6 @@ const AddProduct = () => {
                     <label htmlFor="precoVenda">Preço de Venda (R$) *</label>
                     <input type="number" id="precoVenda" name="precoVenda" value={produto.precoVenda} onChange={handleChange} min="0" step="0.01" required />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="foto">URL da Foto</label>
-                    <input type="text" id="foto" name="foto" value={produto.foto} onChange={handleChange} placeholder="https://exemplo.com/imagem.jpg" />
-                </div>
 
                 {produto.receita.map((item, index) => (
                     <div key={index} className="receita-item">

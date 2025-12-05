@@ -7,6 +7,7 @@ const Stock = () => {
     const [supplies, setSupplies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [totalSpent, setTotalSpent] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,6 +16,12 @@ const Stock = () => {
                 // A rota para buscar insumos é /api/insumo
                 const response = await axios.get('http://localhost:3001/api/insumos');
                 setSupplies(response.data);
+                // calcular total gasto: soma de custoPorUnidade * estoqueAtual
+                const total = (response.data || []).reduce((acc, s) => {
+                    const custo = Number(s.custoPorUnidade) || 0;
+                    return acc + custo ;
+                }, 0);
+                setTotalSpent(total);
             } catch (err) {
                 setError('Erro ao buscar o estoque.');
                 console.error('Erro ao buscar estoque:', err);
@@ -66,6 +73,10 @@ const Stock = () => {
                     </tbody>
                 </table>
             </div>
+            <div className="stock-total">
+                    <strong>Total gasto em insumos: </strong>
+                    <span>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalSpent)}</span>
+                </div>
         </div>
     );
 };

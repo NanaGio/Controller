@@ -13,7 +13,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/produtos'); // Ajuste a URL se necessário
+        const response = await axios.get('http://localhost:3001/api/produto'); // Ajuste a URL se necessário
         setProducts(response.data);
       } catch (err) {
         setError('Falha ao carregar os produtos.');
