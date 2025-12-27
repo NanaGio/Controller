@@ -1,6 +1,6 @@
 .sale-details-container {
     padding: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Poppins, sans-serif;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -13,8 +13,10 @@
 }
 
 .sale-details-header h2 {
-    color: #333;
+    color: #28224E;
     font-size: 1.75rem;
+    font-weight: 500;
+
 }
 
 .details-card {

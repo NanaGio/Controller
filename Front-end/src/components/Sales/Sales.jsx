@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Sales.css';
+import '../HomePage/HomePage.css';
 
 const Sales = () => {
     const [vendas, setVendas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    const handleGoBack = () => navigate('/home');
 
     useEffect(() => {
         const fetchVendas = async () => {
@@ -36,11 +39,20 @@ const Sales = () => {
 
     return (
         <div className="sales-list-container">
+            <button onClick={handleGoBack} className="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" height={24}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
             <div className="sales-header">
                 <h2>Histórico de Vendas</h2>
                 <div className="sales-header-actions">
-                    <button onClick={() => navigate('/sales/new')} className="btn btn-primary">Adicionar Venda</button>
-                    <button onClick={() => navigate('/home')} className="btn btn-secondary">Voltar</button>
+                    <button className="add-button" onClick={() => navigate('/sales/new')}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" height={30}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Adicionar
+                    </button>
                 </div>
             </div>
             <div className="sales-table-container">

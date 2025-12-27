@@ -1,26 +1,32 @@
 /* --- Estilos Mobile First (Padrão) --- */
+
 .sales-list-container {
     padding: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #f4f4f9; */
     min-height: 100vh;
 }
 
 .sales-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
 .sales-header h2 {
-    color: #333;
-    font-size: 1.75rem;
+    color: #28224E;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .sales-header-actions {
     display: flex;
     gap: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sales-table-container {

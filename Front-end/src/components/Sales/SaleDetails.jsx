@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './SaleDetails.css';
+import '../HomePage/HomePage.css';
 
 // Dados de exemplo para desenvolvimento visual
 const mockSale = {
@@ -20,6 +21,7 @@ const SaleDetails = () => {
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
     const navigate = useNavigate();
+    const handleGoBack = () => navigate('/home');
 
     useEffect(() => {
         // Simula o carregamento dos dados de uma venda específica
@@ -51,9 +53,13 @@ const SaleDetails = () => {
 
     return (
         <div className="sale-details-container">
+            <button onClick={handleGoBack} className="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" height={24}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
             <div className="sale-details-header">
                 <h2>Detalhes da Venda</h2>
-                <button onClick={() => navigate('/sales')} className="btn btn-secondary">Voltar</button>
             </div>
             <div className="details-card">
                 <div className="details-group">
