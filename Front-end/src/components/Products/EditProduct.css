@@ -1,0 +1,90 @@
+/* Reutiliza estilos de ProductDetails */
+@import './ProductDetails.css';
+
+/* Estilos específicos para inputs e textareas no formulário de edição */
+.details-form input,
+.details-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.details-form input:focus,
+.details-form textarea:focus {
+    outline: none;
+    border-color: #28224E;
+    box-shadow: 0 0 0 3px rgba(40, 34, 78, 0.1);
+}
+
+.details-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.details-form .details-text {
+    display: block;
+    padding: 0.5rem .5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+.details-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background-color: #28224E;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1a1531;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+}
+
+.error {
+    color: #d9534f;
+}
+
+.loading {
+    color: #28224E;
+}

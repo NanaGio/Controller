@@ -1,25 +1,47 @@
 .add-supply-container {
-    padding: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
     max-width: 800px;
     margin: 0 auto;
 }
 
+.back-button {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #27214D;
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 6px 1px 1px;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.back-button svg {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .add-supply-header {
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
 }
 
 .add-supply-header h2 {
-    color: #333;
-    font-size: 1.75rem;
+    color: #27214D;
+    font-size: 1.8rem;
+    font-weight: normal;
 }
 
 .add-supply-form {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .form-group {
@@ -29,16 +51,18 @@
 .form-group label {
     display: block;
     font-weight: 600;
-    color: #555;
+    color: #27214D;
     margin-bottom: 0.5rem;
 }
 
 .form-control {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    color: #28224E;
+    background-color: #F5F5F5;
 }
 
 .form-actions {
@@ -47,4 +71,24 @@
     margin-top: 2rem;
     border-top: 1px solid #eee;
     padding-top: 1.5rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Verde para adicionar */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
 }

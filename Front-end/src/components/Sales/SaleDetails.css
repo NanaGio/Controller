@@ -1,7 +1,7 @@
 .sale-details-container {
     padding: 1rem;
     font-family: Poppins, sans-serif;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -28,6 +28,10 @@
 
 .details-group {
     margin-bottom: 1.5rem;
+    padding: 1rem;
+    color: #000;
+    background-color: #f9f9f9;
+    border-radius: 6px;
 }
 
 .details-group:last-child {
@@ -56,16 +60,17 @@
 }
 
 .details-group ul li {
-    background-color: #f9f9f9;
-    padding: 0.5rem;
+    background-color: #fff;
+    padding: 0.75rem;
     border-radius: 4px;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #28224E;
 }
 
 .details-actions {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-    border-top: 1px solid #eee;
-    padding-top: 1.5rem;
+    padding-top: 0;
+    border-top: none;
 }

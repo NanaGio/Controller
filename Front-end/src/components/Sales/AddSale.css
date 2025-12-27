@@ -1,25 +1,31 @@
 .add-sale-container {
     padding: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     max-width: 800px;
     margin: 0 auto;
 }
 
+.back-button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
 .add-sale-header {
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
 }
 
 .add-sale-header h2 {
-    color: #333;
+    color: #28224E;
     font-size: 1.75rem;
+    font-weight: 500;
 }
 
 .add-sale-form {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: .5rem;
 }
 
 .form-group {
@@ -31,6 +37,8 @@
     font-weight: 600;
     color: #555;
     margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
 .form-control {
@@ -53,9 +61,7 @@
 }
 
 .quantity-input {
-    max-width: 80px;
     text-align: center;
-    flex: 0 0 80px !important;
 }
 
 .add-item-btn {

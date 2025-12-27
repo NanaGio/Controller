@@ -5,6 +5,8 @@ const vendaController = require('../controllers/venda.controller');
 
 router.get('/venda', vendaController.getAllVendas)
 
+router.get('/venda/:id', vendaController.getVendaById)
+
 router.post('/venda', vendaController.createVenda)
 
 router.put('/venda/:id', vendaController.updateVenda)

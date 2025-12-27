@@ -1,45 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './SaleDetails.css';
 import '../HomePage/HomePage.css';
-
-// Dados de exemplo para desenvolvimento visual
-const mockSale = {
-    _id: '1',
-    nomeCliente: 'João da Silva',
-    itens: [
-        { _id: 'i1', produtoId: { nome: 'Bolo de Chocolate' }, quantidade: 1 },
-        { _id: 'i2', produtoId: { nome: 'Torta de Limão' }, quantidade: 2 },
-    ],
-    valorTotalVenda: 150.50,
-    custoTotalInsumos: 75.25,
-    dataVenda: new Date().toISOString(),
-};
 
 const SaleDetails = () => {
     const [sale, setSale] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
-    const handleGoBack = () => navigate('/home');
+    const handleGoBack = () => navigate('/sales');
 
     useEffect(() => {
-        // Simula o carregamento dos dados de uma venda específica
-        const timer = setTimeout(() => {
-            // Em um caso real, você buscaria a venda pelo 'id'
-            setSale(mockSale);
-            setLoading(false);
-        }, 500);
+        const fetchSaleDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/api/venda/${id}`);
+                setSale(response.data);
+            } catch (err) {
+                setError('Erro ao buscar os detalhes da venda.');
+                console.error('Erro ao buscar venda:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        return () => clearTimeout(timer);
+        fetchSaleDetails();
     }, [id]);
 
     const handleDelete = () => {
-        // Lógica para deletar a venda (será implementada no futuro)
         if (window.confirm('Tem certeza que deseja excluir esta venda?')) {
-            console.log(`Excluindo venda com ID: ${id}`);
-            // Após a exclusão, navegar de volta para a lista
-            navigate('/sales');
+            const deleteVenda = async () => {
+                try {
+                    await axios.delete(`http://localhost:3001/api/venda/${id}`);
+                    alert('Venda excluída com sucesso!');
+                    navigate('/sales');
+                } catch (err) {
+                    alert('Erro ao excluir a venda.');
+                    console.error('Erro ao excluir venda:', err);
+                }
+            };
+            deleteVenda();
         }
     };
 
@@ -47,8 +48,8 @@ const SaleDetails = () => {
         return <div className="loading">Carregando detalhes da venda...</div>;
     }
 
-    if (!sale) {
-        return <div>Venda não encontrada.</div>;
+    if (error) {
+        return <div className="error">{error}</div>;
     }
 
     return (

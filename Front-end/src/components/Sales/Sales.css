@@ -7,12 +7,19 @@
     min-height: 100vh;
 }
 
+.back-button {
+    display: block;
+    margin-bottom: 1rem;
+}
+
 .sales-header {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sales-header h2 {
@@ -25,14 +32,14 @@
 .sales-header-actions {
     display: flex;
     gap: 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .sales-table-container {
-    /* Remove estilos de container de tabela no mobile */
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 .sales-table {
     width: 100%;
     border-collapse: separate;

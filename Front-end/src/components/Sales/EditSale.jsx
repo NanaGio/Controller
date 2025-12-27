@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './EditSale.css';
+import '../HomePage/HomePage.css';
 
 // Dados de exemplo para desenvolvimento visual
 const mockSale = {
@@ -18,22 +20,29 @@ const mockSale = {
 const EditSale = () => {
     const [sale, setSale] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const handleGoBack = () => navigate(`/sales/details/${id}`);
 
     useEffect(() => {
-        // Simula o carregamento dos dados para edição
-        const timer = setTimeout(() => {
-            // Formata a data para o formato YYYY-MM-DD compatível com input[type="date"]
-            const formattedSale = {
-                ...mockSale,
-                dataVenda: new Date(mockSale.dataVenda).toISOString().split('T')[0]
-            };
-            setSale(formattedSale);
-            setLoading(false);
-        }, 500);
+        const fetchSaleForEdit = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/api/venda/${id}`);
+                const formattedSale = {
+                    ...response.data,
+                    dataVenda: new Date(response.data.dataVenda).toISOString().split('T')[0]
+                };
+                setSale(formattedSale);
+            } catch (err) {
+                setError('Erro ao buscar os dados da venda.');
+                console.error('Erro ao buscar venda:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        return () => clearTimeout(timer);
+        fetchSaleForEdit();
     }, [id]);
 
     const handleChange = (e) => {
@@ -54,15 +63,24 @@ const EditSale = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Salvando alterações:', sale);
-        // Navega de volta para a página de detalhes após salvar
-        navigate(`/sales/details/${id}`);
+        try {
+            await axios.put(`http://localhost:3001/api/venda/${id}`, sale);
+            alert('Alterações salvas com sucesso!');
+            navigate(`/sales/details/${id}`);
+        } catch (err) {
+            alert('Erro ao salvar alterações.');
+            console.error('Erro ao atualizar venda:', err);
+        }
     };
 
     if (loading) {
-        return <div className="loading">Carregando formulário...</div>;
+        return <div>Carregando...</div>;
+    }
+
+    if (error) {
+        return <div className="error">{error}</div>;
     }
 
     if (!sale) {
@@ -71,6 +89,11 @@ const EditSale = () => {
 
     return (
         <div className="edit-sale-container">
+            <button onClick={handleGoBack} className="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" height={24}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </button>
             <div className="edit-sale-header">
                 <h2>Editar Venda</h2>
             </div>

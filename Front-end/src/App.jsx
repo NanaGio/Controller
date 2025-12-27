@@ -5,11 +5,13 @@ import StartScreen from './components/StartScreen/StartScreen.jsx'
 import HomePage from './components/HomePage/HomePage.jsx';
 import Products from './components/Products/Products.jsx';
 import AddProduct from './components/Products/AddProduct.jsx';
+import ProductDetails from './components/Products/ProductDetails.jsx';
+import EditProduct from './components/Products/EditProduct.jsx';
 import Sales from './components/Sales/Sales.jsx';
 import AddSale from './components/Sales/AddSale.jsx';
 import SaleDetails from './components/Sales/SaleDetails.jsx';
 import EditSale from './components/Sales/EditSale.jsx';
-import Stock from './Stock.jsx';
+import Stock from './components/Stock/Stock.jsx';
 import AddSupply from './components/Stock/AddSupply.jsx';
 import EditSupply from './components/Stock/EditSupply.jsx';
 
@@ -29,6 +31,8 @@ function App() {
         <Route path="/home" element={<HomePage name={name} />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/new" element={<AddProduct />} />
+        <Route path="/products/edit/:id" element={<EditProduct />} />
+        <Route path="/products/details/:id" element={<ProductDetails />} />
         <Route path="/sales" element={<Sales />} />
         <Route path="/sales/new" element={<AddSale />} />
         <Route path="/sales/details/:id" element={<SaleDetails />} />
