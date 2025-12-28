@@ -2,7 +2,8 @@
     padding: 1rem;
     font-family: Poppins, sans-serif;
     max-width: 500px;
-    margin: 0 auto;
+    margin-top: 70px;
+    width: 90vw;
 }
 
 .sale-details-header {
@@ -13,6 +14,7 @@
 }
 
 .sale-details-header h2 {
+    margin-left: 2px;
     color: #28224E;
     font-size: 1.75rem;
     font-weight: 500;
@@ -68,6 +70,7 @@
 }
 
 .details-actions {
+    width: 76vw;
     display: flex;
     gap: 1rem;
     margin-top: 2rem;

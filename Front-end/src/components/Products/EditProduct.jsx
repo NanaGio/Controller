@@ -7,6 +7,7 @@ const EditProduct = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
+    const [insumos, setInsumos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -22,12 +23,42 @@ const EditProduct = () => {
                 setLoading(false);
             }
         };
+
+        const fetchInsumos = async () => {
+            try {
+                const res = await axios.get('http://localhost:3001/api/insumos');
+                setInsumos(res.data);
+            } catch (err) {
+                console.error('Erro ao buscar insumos:', err);
+            }
+        };
+
         fetchProduct();
+        fetchInsumos();
     }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleReceitaChange = (index, e) => {
+        const { name, value } = e.target;
+        const novaReceita = [...(product.receita || [])];
+        novaReceita[index] = { ...novaReceita[index], [name]: value };
+        setProduct(prev => ({ ...prev, receita: novaReceita }));
+    };
+
+    const adicionarIngrediente = () => {
+        setProduct(prev => ({
+            ...prev,
+            receita: [...(prev.receita || []), { insumoId: '', quantidadeN: '' }]
+        }));
+    };
+
+    const removerIngrediente = (index) => {
+        const novaReceita = (product.receita || []).filter((_, i) => i !== index);
+        setProduct(prev => ({ ...prev, receita: novaReceita }));
     };
 
     const handleSubmit = async (e) => {
@@ -38,7 +69,10 @@ const EditProduct = () => {
                 descricao: product.descricao,
                 precoVenda: Number(product.precoVenda) || 0,
                 foto: product.foto,
-                receita: product.receita || []
+                receita: (product.receita || []).map(item => ({
+                    insumoId: typeof item.insumoId === 'object' ? item.insumoId._id : item.insumoId,
+                    quantidadeN: Number(item.quantidadeN)
+                }))
             };
             await axios.put(`http://localhost:3001/api/produto/${id}`, payload);
             alert('Produto atualizado com sucesso!');
@@ -46,6 +80,19 @@ const EditProduct = () => {
         } catch (err) {
             console.error('Erro ao atualizar produto:', err);
             alert('Erro ao atualizar produto. Verifique o console.');
+        }
+    };
+
+    const handleDelete = async () => {
+        if (window.confirm('Tem certeza que deseja excluir este produto?')) {
+            try {
+                await axios.delete(`http://localhost:3001/api/produto/${id}`);
+                alert('Produto excluído com sucesso!');
+                navigate('/products');
+            } catch (err) {
+                console.error('Erro ao excluir produto:', err);
+                alert('Erro ao excluir produto.');
+            }
         }
     };
 
@@ -80,9 +127,38 @@ const EditProduct = () => {
                     <label>Preço de Venda (R$)</label>
                     <input type="number" name="precoVenda" value={product.precoVenda ?? ''} onChange={handleChange} step="0.01" className="details-text" />
                 </div>
+
+                <div className="form-group">
+                    <label>Receita (Ingredientes)</label>
+                    {(product.receita || []).map((item, index) => (
+                        <div key={index} className="receita-item">
+                            <div className="form-group" style={{ flex: 1 }}>
+                                <label>Insumo</label>
+                                <select 
+                                    name="insumoId" 
+                                    value={typeof item.insumoId === 'object' ? item.insumoId._id : item.insumoId} 
+                                    onChange={(e) => handleReceitaChange(index, e)} 
+                                    className="details-text"
+                                >
+                                    <option value="">Selecione</option>
+                                    {insumos.map(ins => (
+                                        <option key={ins._id} value={ins._id}>{ins.nome} ({ins.unidadeMedida})</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group" style={{ width: '100px' }}>
+                                <label>Qtd</label>
+                                <input type="number" name="quantidadeN" value={item.quantidadeN} onChange={(e) => handleReceitaChange(index, e)} className="details-text" />
+                            </div>
+                            <button type="button" onClick={() => removerIngrediente(index)} className="remove-button">Remover</button>
+                        </div>
+                    ))}
+                    <button type="button" onClick={adicionarIngrediente} className="add-ingredient-button">Adicionar Ingrediente</button>
+                </div>
+
                 <div className="details-actions">
                     <button type="submit" className="btn btn-primary">Salvar</button>
-                    <button type="button" onClick={() => navigate(`/products/details/${id}`)} className="btn btn-secondary">Cancelar</button>
+                    <button type="button" onClick={handleDelete} className="btn btn-danger" style={{ backgroundColor: '#dc3545', color: 'white' }}>Excluir</button>
                 </div>
             </form>
         </div>

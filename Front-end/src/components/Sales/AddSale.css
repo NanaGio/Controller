@@ -2,7 +2,7 @@
     padding: 1rem;
     font-family: 'Poppins', sans-serif;
     max-width: 800px;
-    margin: 0 auto;
+    margin-top: 70px;
 }
 
 .back-button {
@@ -16,8 +16,9 @@
 }
 
 .add-sale-header h2 {
+    margin-left: 2px;
     color: #28224E;
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     font-weight: 500;
 }
 
@@ -30,6 +31,10 @@
 
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.form-group button {
+    font-size: .9rem;
 }
 
 .form-group label {
@@ -84,4 +89,8 @@
     margin-top: 2rem;
     border-top: 1px solid #eee;
     padding-top: 1.5rem;
+}
+
+.form-actions button {
+    font-size: .8rem;
 }

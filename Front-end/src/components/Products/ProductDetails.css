@@ -1,22 +1,32 @@
 .product-details-container {
     max-width: 700px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 5rem 1rem 1rem 1rem;
     background-color: #ffffff;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
+    position: relative;
+    width: 90vw !important;
 }
 
 .back-button {
-    display: block;
-    margin-bottom: 1rem;
-    background: none;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #F5F5F5;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     cursor: pointer;
     padding: 0;
 }
 
 .product-details-header {
+    margin-top: 30px;
     text-align: left;
     margin-bottom: 2rem;
     border-bottom: 1px solid #eee;
@@ -24,8 +34,8 @@
 }
 
 .product-details-header h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.7rem;
+    font-weight: 500;
     color: #28224E;
 }
 
@@ -79,6 +89,7 @@
 }
 
 .details-actions {
+    width: 90vw !important;
     margin-top: 2rem;
     text-align: center;
 }

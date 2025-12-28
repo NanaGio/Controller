@@ -25,6 +25,19 @@ const ProductDetails = () => {
         fetchProduct();
     }, [id]);
 
+    const handleDelete = async () => {
+        if (window.confirm('Tem certeza que deseja excluir este produto?')) {
+            try {
+                await axios.delete(`http://localhost:3001/api/produto/${id}`);
+                alert('Produto excluído com sucesso!');
+                navigate('/products');
+            } catch (err) {
+                console.error('Erro ao excluir produto:', err);
+                alert('Erro ao excluir produto.');
+            }
+        }
+    };
+
     if (loading) {
         return <div className="loading">Carregando...</div>;
     }
@@ -64,7 +77,7 @@ const ProductDetails = () => {
                 </div>
                 <div className="details-actions">
                     <Link to={`/products/edit/${product._id}`} className="btn btn-primary">Editar</Link>
-                    <Link to={`/products/delete/${product._id}`} className="btn btn-danger">Excluir</Link>
+                    <button onClick={handleDelete} className="btn btn-danger" style={{ backgroundColor: '#dc3545', color: 'white' }}>Excluir</button>
                 </div>
             </div>
         </div>

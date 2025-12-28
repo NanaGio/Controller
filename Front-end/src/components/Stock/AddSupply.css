@@ -2,7 +2,7 @@
     padding: 20px;
     font-family: 'Poppins', sans-serif;
     max-width: 800px;
-    margin: 0 auto;
+    margin-top: 60px;
 }
 
 .back-button {
@@ -30,7 +30,7 @@
 
 .add-supply-header h2 {
     color: #27214D;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: normal;
 }
 

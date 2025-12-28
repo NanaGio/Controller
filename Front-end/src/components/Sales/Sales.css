@@ -1,6 +1,7 @@
 /* --- Estilos Mobile First (Padrão) --- */
 
 .sales-list-container {
+    margin-top: 70px;
     padding: 1rem;
     font-family: 'Poppins', sans-serif;
     /* background-color: #f4f4f9; */
@@ -15,7 +16,7 @@
 .sales-header {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 1rem;
     margin-bottom: 1.5rem;
     margin-left: auto;
@@ -23,9 +24,10 @@
 }
 
 .sales-header h2 {
+    margin-left: 3px;
     color: #28224E;
     font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 500;
 }
 
@@ -35,7 +37,7 @@
 }
 
 .sales-table-container {
-    width: 100%;
+    width: 90vw;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;

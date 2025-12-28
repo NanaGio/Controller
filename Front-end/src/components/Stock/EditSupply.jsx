@@ -55,6 +55,19 @@ const EditSupply = () => {
         }
     };
 
+    const handleDelete = async () => {
+        if (window.confirm('Tem certeza que deseja excluir este insumo?')) {
+            try {
+                await axios.delete(`http://localhost:3001/api/insumos/${id}`);
+                alert('Insumo excluído com sucesso!');
+                navigate('/stock');
+            } catch (error) {
+                console.error('Erro ao excluir insumo:', error);
+                alert('Erro ao excluir insumo.');
+            }
+        }
+    };
+
     if (loading) return <div className="loading">Carregando...</div>;
     if (error) return <div className="error-message">{error}</div>;
 
@@ -93,7 +106,7 @@ const EditSupply = () => {
                 </div>
                 <div className="form-actions">
                     <button type="submit" className="btn btn-primary">Salvar Alterações</button>
-                    <button type="button" onClick={() => navigate('/stock')} className="btn btn-secondary">Cancelar</button>
+                    <button type="button" onClick={handleDelete} className="btn btn-danger" style={{ backgroundColor: '#dc3545', color: 'white' }}>Excluir</button>
                 </div>
             </form>
         </div>
