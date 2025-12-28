@@ -70,7 +70,7 @@
 }
 
 .details-actions {
-    width: 76vw;
+    width: 77vw !important;
     display: flex;
     gap: 1rem;
     margin-top: 2rem;

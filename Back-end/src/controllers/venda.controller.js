@@ -23,8 +23,9 @@ exports.createVenda = async (req, res) => {
             for (const ingrediente of produtoInfo.receita) {
                 const insumo = ingrediente.insumoId;
                 const quantidadeGasta = ingrediente.quantidadeN * item.quantidade;
-                
-                custoTotalInsumos += (insumo.custoPorUnidade * quantidadeGasta);
+
+                const custoIngrediente = insumo.custoPorUnidade * (quantidadeGasta / 1000);
+                custoTotalInsumos += custoIngrediente;
 
                 await Insumo.findByIdAndUpdate(insumo._id, {
                     $inc: { estoqueAtual: -quantidadeGasta }

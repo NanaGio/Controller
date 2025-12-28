@@ -94,9 +94,7 @@ const EditSupply = () => {
                     <label>Unidade de Medida</label>
                     <select name="unidadeMedida" value={supply.unidadeMedida} onChange={handleChange} className="form-control" required>
                         <option value="g">Grama (g)</option>
-                        <option value="kg">Quilograma (kg)</option>
                         <option value="ml">Mililitro (ml)</option>
-                        <option value="litro">Litro (litro)</option>
                         <option value="unidade">Unidade (unidade)</option>
                     </select>
                 </div>

@@ -9,7 +9,7 @@ const InsumoSchema = new mongoose.Schema({
     unidadeMedida:{
         type: String,
         required: true,
-        enum: ['kg', 'g', 'litro', 'ml', 'unidade']
+        enum: ['g', 'ml', 'unidade']
     },
     custoPorUnidade:{
         type: Number,
