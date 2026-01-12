@@ -1,0 +1,27 @@
+.app-header {
+    position: fixed; /* Fixa o cabeçalho no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Altura do cabeçalho */
+    background-color: #fff;
+    z-index: 1000; /* Garante que fique sobre outros elementos */
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura em telas grandes */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza a logo (ou use flex-start para alinhar à esquerda) */
+}
+
+.header-logo {
+    height: 50px; /* Ajuste conforme o tamanho da sua logo */
+    width: auto;
+    object-fit: contain;
+}

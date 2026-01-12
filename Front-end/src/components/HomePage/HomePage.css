@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 90px; /* Ajustado para compensar o Header fixo de 70px */
     padding: 1rem;
     text-align: center;
     min-height: 100vh;

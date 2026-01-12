@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
+import Header from '../Header/Header';
 
 const HomePage = ({ name }) => {
   const navigate = useNavigate();
@@ -30,7 +31,9 @@ const HomePage = ({ name }) => {
   }, []);
 
   return (
-    <div className="homepage-container">
+    <>
+    <Header />
+      <div className="homepage-container">
       <h1 className="homepage-greeting">Olá, {name}</h1>
       <p className="homepage-subtitle">Acompanhe os dados financeiros do seu negócio.</p>
       <div className="stats-box">
@@ -70,6 +73,7 @@ const HomePage = ({ name }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

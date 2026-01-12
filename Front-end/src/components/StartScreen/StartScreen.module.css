@@ -73,7 +73,7 @@
 }
 
 .continueButton {
-  background-color: #AD795B;
+  background-color: #007ad2;
   color: #FFFFFF;
   border: none;
   padding: 14px;
@@ -86,5 +86,5 @@
 }
 
 .continueButton:hover {
-  background-color: #9c6b50; /* Um tom mais escuro para o hover */
+  background-color: #0064ab; /* Um tom mais escuro para o hover */
 }

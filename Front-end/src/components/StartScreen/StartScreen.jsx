@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './StartScreen.module.css';
+import Header from '../Header/Header';
 
 function StartScreen({ onLogin }) {
   const [name, setName] = useState('');
@@ -13,15 +14,17 @@ function StartScreen({ onLogin }) {
   };
 
   return (
-    <div className={styles.container}>
+    <>
+    <Header />
+    <div className={styles.container} style={{ marginTop: '70px', height: 'calc(100vh - 70px)' }}>
       <div 
         className={styles.welcomeSection} 
       >
-        <h1 className={styles.welcomeText}>Bem-vindo(a) ao Delicake!</h1>
+        <h1 className={styles.welcomeText}>Bem-vindo(a) ao Controller!</h1>
         <h2 className={styles.welcomeDescription}>
           O melhor gerenciador financeiro para seu negócio.
         </h2>
-      </div>''
+      </div>
       <div className={styles.paragrapSection}>
 
       </div>
@@ -39,6 +42,7 @@ function StartScreen({ onLogin }) {
         <button onClick={handleContinue} className={styles.continueButton}>Continuar</button>
       </div>
     </div>
+    </>
   );
 }
 
